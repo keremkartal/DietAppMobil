@@ -1,152 +1,233 @@
-# DietAppMobil
+Harika bir proje olmuş\! İzzet ile birlikte güzel bir iş çıkarmışsınız. GitHub'da paylaşmanız için aşağıda detaylı bir README.md dosyası hazırladım. Bu dosyayı kopyalayıp doğrudan projenizin ana dizinine `README.md` olarak ekleyebilirsiniz.
 
----
-### Proje Açıklaması
-Bu projenin amacı, diyet yapma sürecinde bireylerin ihtiyaç duyduğu uzman desteğine kolayca 
-ulaşmasını sağlamak, diyetisyenlerle danışanları dijital ortamda bir araya getirerek etkin bir takip, 
-iletişim ve geri bildirim mekanizması sunmaktır. Diyetisyenler farklı diyet alanlarında (örneğin sporcu 
-diyeti, vegan diyeti vb.) uzmanlıklarını sisteme tanımlayabilirken, danışanlar ihtiyaçlarına göre seçim 
-yapabilir, önceki kullanıcı yorumlarını inceleyebilir. Danışan istediği diyetisyene talep gönderebilir ve diyetisyenin talebi onaylaması durumunda artık diyetisyen hizmeti alabilir. Diyetisyen ilgili danışana özel bilgilerine göre ve isteklerine göre doğru programını hazırlar.
+-----
 
-# Proje Kurulum
-Projeyi klonlamak içim: git clone https://github.com/theIzzet/DietAppMobil.git
+# DietApp Mobil Diyet ve Beslenme Takip Uygulaması
 
-Proje Visual Stıdio Code aracılığıyla geliştirilmiştir.
-Restful, Asp .NET Core Web Api 9.0 ile geliştirilmiştir ve dosyaları DietTracking.API klasörü içerisindedir. çalıştırılması için proje klonlandıktan sonra açıldığında cd DietTracking.API komutu ile ilgili dizine gidilir ve dotnet run komutu ile çalıştırılır.
+Bu proje, diyetisyenler ve danışanları bir araya getiren, kişiselleştirilmiş diyet planları oluşturulmasına, takibine ve anlık iletişime olanak tanıyan bir mobil uygulamadır. .NET Core Web API ve React Native (Expo) kullanılarak geliştirilmiştir.
 
-Arayüz için React Native kullanılmıştır. ilgili dizine cd DietAppCliet ile geçilir. npm install komutu ile npm kütüphanesi indirilir. Daha sonra npx expo start komutu ile çalıştırılır ve terminaldeki qr kod okutularak uygulama çalıştırılır. **Projenin geliştirildiği cihaz ile bağlanacak telefon aynı interneti kullanmalıdır.Ayrıca restful ve ui eş zamanlı çalıştırılımalıdır.**
+## ✨ Projenin Amacı
 
----
+  * **Diyetisyenler İçin:** Danışanlarını kolayca yönetebilecekleri, onlara özel diyet listeleri hazırlayabilecekleri, gelişimlerini takip edebilecekleri ve onlarla anlık olarak iletişim kurabilecekleri bir platform sunmak.
+  * **Danışanlar İçin:** Diyetisyenleriyle kolayca iletişim kurabilecekleri, diyet listelerine anında erişebilecekleri, vücut ölçümlerini ve ilerlemelerini kaydedebilecekleri ve motivasyonlarını yüksek tutacak özelliklerden faydalanabilecekleri bir mobil uygulama sağlamak.
 
-# Geliştirme Süreci
+## 🚀 Teknolojiler ve Mimari
 
-Projenin geliştirme aşamasında her bir ekip üyesi en az 2 özellikte çalışma yaptı. Özellikler birbiriyle ilişkili olduğu için her ekip farklı branchlerde(özellik) de çalışma gerçekleştirdi. Haftalık PR ler oluşturularak ilgili projenin özellikleri develop branchine entegre edildi. En son develop branchinden main branche aktarıldı. 
+Proje, modern ve ölçeklenebilir teknolojiler kullanılarak **Client-Server** mimarisiyle geliştirilmiştir.
 
-Proje gerçekleştirme sürecinde bin, obj gibi klasörlerde paket uyuşmazlıkları  yaşadık. Bu durum fazla vakit kaybına yol açtı. 
+### Backend (Sunucu Tarafı) - `DietTracking.API`
 
----
+  * **.NET 9:** Güçlü ve performanslı backend altyapısı.
+  * **ASP.NET Core Web API:** RESTful API servisleri için kullanılmıştır.
+  * **Entity Framework Core:** Veritabanı işlemleri için kullanılan ORM (Object-Relational Mapping) aracıdır.
+  * **SQLite:** Geliştirme ortamı için hafif ve sunucusuz bir veritabanı motoru.
+  * **ASP.NET Core Identity:** Kullanıcı kimlik doğrulama ve yetkilendirme işlemleri için.
+  * **JWT (JSON Web Tokens):** Güvenli API iletişimi için token tabanlı kimlik doğrulama.
+  * **SignalR:** Diyetisyen ve danışan arasında anlık mesajlaşma (chat) özelliği için gerçek zamanlı iletişim kütüphanesi.
+  * **FluentValidation:** Modellerin sunucu tarafında doğrulanması için kullanılmıştır.
+  * **Swagger:** API endpoint'lerinin dokümantasyonu ve testi için.
 
-# Özellikler
+### Frontend (İstemci Tarafı) - `DietAppClient`
 
----
+  * **React Native:** iOS ve Android için cross-platform mobil uygulama geliştirmeyi sağlar.
+  * **Expo:** React Native uygulama geliştirme sürecini basitleştiren bir framework ve platform.
+  * **React Navigation:** Uygulama içi ekran geçişleri ve navigasyon yönetimi için.
+  * **Axios:** Backend API'si ile iletişim kurmak için kullanılan HTTP istemcisi.
+  * **AsyncStorage:** Cihaz üzerinde veri saklamak için.
+  * **Expo Notifications:** Anlık bildirimler göndermek için.
 
-**1-Basic/Storage Data**
+## 🔧 Kurulum ve Çalıştırma
 
-**Basic Data:** Basic data için projeye karanlık mod seçeneği eklenmiştir. Basic data için preferences kullanımı sağlanmıştır. Bunun için react native de bulunan async - storage kullanılmıştır. Bunun için kullanılan eklenti şu şekilde sisteme eklendi: **npm install @react-native-async-storage/async-storage**. 
-Preference kullanımı ve async-storege kullanımının incelenmesi için şu dosyaya göz atılmalıdır: DietAppCliet/context/ThemeContext.js.
+Projeyi yerel makinenizde çalıştırmak için aşağıdaki adımları izleyebilirsiniz.
 
+### 1\. Backend Kurulumu (`DietTracking.API`)
 
-**Sorumlu Kişi:** İzzet Esener
+Öncelikle `.NET 9 SDK`'nın yüklü olduğundan emin olun.
 
-**İlgili Branch:** develop-basic_data
+1.  **Repository'yi Klonlayın:**
 
+    ```bash
+    git clone <repository-url>
+    cd DietAppMobil-38e14c0710a55204b6cc14d911e816586df41043/DietTracking.API
+    ```
 
+2.  **Gerekli Paketleri Yükleyin:**
 
-**Storage Data:** Storage data için diyetisyene danışan danışmanlar(hastalar) için form takip sistemi tasarlanmıştır. Danışanlar burada sisteme mevcut form durumunu tarihiyle birlikte ekleyebilir resim olarak. Storage kapsamında app-specific  kullanıma yönelik dosya sistemi üzerine uygulamalar var. Bu uygulamada kullanıcıların yüklediği vücut fotoğrafları, cihazın uygulamaya özel (app-specific) depolama alanında saklanıyor. Bunun için **npx expo install expo-file-system** eklendi. 
+    ```bash
+    dotnet restore
+    ```
 
-**Sorumlu Kişi:** İzzet Esener
+3.  **Veritabanını Oluşturun:**
+    Proje Entity Framework Core Migrations kullandığı için, veritabanı ilk çalıştırmada otomatik olarak oluşturulacaktır (`dietapp.db`). Dilerseniz aşağıdaki komutla manuel olarak da veritabanını güncelleyebilirsiniz:
 
-**İlgili Branch:** develop-storage-data
+    ```bash
+    dotnet ef database update
+    ```
 
----
+4.  **Uygulamayı Çalıştırın:**
 
-**2-LocalDatabase**: Projede LocalDatabase özelliği bulunmamaktadır.
+    ```bash
+    dotnet run
+    ```
 
----
+    API, `https://localhost:PORT` ve `http://localhost:PORT` adreslerinde çalışmaya başlayacaktır. Swagger arayüzüne `https://localhost:PORT/index.html` adresinden ulaşabilirsiniz.
 
-**3- RESTFul API (CRUD):** Projede Asp .NET Core Web Api 9.0 kullanılmıştır. DietTracking.API klasörü restfulu içermektedir. 
+### 2\. Frontend Kurulumu (`DietAppClient`)
 
-**Sorumlu Kişi:** Kerem Kartal
+Öncelikle `Node.js`, `npm` ve `Expo CLI`'ın yüklü olduğundan emin olun.
 
-**İlgili Branch:** develop-restful-storage
+1.  **Dizine Gidin:**
 
----
+    ```bash
+    cd ../DietAppClient
+    ```
 
-**4- UI:** Projede UI olarak React Native kullanılmıştır. Expo paketi ile proje mobilde çalıştırılmıştır. İlgili dosyalar DietAppCliet dizini altındadır.
+2.  **Gerekli Paketleri Yükleyin:**
 
-**api.js:** Axios tabanlı HTTP istekleri yönetimi için konfigürasyon. Tüm API çağrılarında otomatik token ekler.
+    ```bash
+    npm install
+    ```
 
-**constants.js:** Uygulama genelinde kullanılan sabitler (API URL'leri gibi) burada tanımlanır.
+3.  **API Adresini Yapılandırın:**
+    `DietAppClient/api.js` dosyasını açın ve `baseURL` değişkenini çalışan backend API adresinizle güncelleyin.
 
-**App.js:** Uygulamanın ana giriş noktası. Navigasyon yapısını ve temel provider'ları içerir.
+    ```javascript
+    const instance = axios.create({
+      baseURL: 'http://<YEREL_IP_ADRESINIZ>:<API_PORT>/api', // Örn: 'http://192.168.1.5:5000/api'
+    });
+    ```
 
-**app.json:** Expo uygulamasının yapılandırma dosyası. Platforma özel ayarlar ve izinler burada tanımlı.
+    *Not: Mobil cihazınızın ve bilgisayarınızın aynı ağda olduğundan emin olun.*
 
-**package.json:** Proje bağımlılıklarını ve script'leri yönetir. Kullanılan tüm kütüphaneler burada listelenir.
-
-**ThemeContext.js:** Karanlık/açık tema yönetimi sağlar. AsyncStorage ile kullanıcı tercihini hatırlar.
-
-**ReminderContext.js:** Su hatırlatıcı özelliğinin durumunu yönetir. Global state sağlar.
-
-**screens/:** Tüm ekran bileşenlerini içeren klasör. Her dosya bir uygulama ekranını temsil eder.
-
-**components/:** Tekrar kullanılabilir UI bileşenlerini içerir (butonlar, kartlar vb.).
-
-
-
-
-**Sorumlu Kişi:** İzzet Esener
-
-**İlgili Branch:** develop-ui
-
----
-
-**5- Background Process / Task:** Background Process / Task özelliği kapsamında, kullanıcıların belirli aralıklarla su içmeyi hatırlamasını sağlayan bir sistem geliştirilmiştir. Kullanıcı, hatırlatma sistemini bir butonla aktif veya pasif hale getirebilir. Bu işlem, uygulama ekranından kontrol edilebilecek bir arayüz ile desteklenmiştir.
-useState ve Context API kullanılarak hatırlatma durumu (isReminderActive) global olarak yönetilir.
-Kullanıcı butona bastığında isReminderActive değeri güncellenir.
-UI üzerinde yeşil/kırmızı renk değişimi ile hatırlatma durumu görsel olarak belirtilir.
-ReminderContext sayesinde diğer bileşenler de bu durumu okuyabilir ve arka plan görevlerini buna göre kontrol edebilir.
-Arka planda çalışan hatırlatma sistemiyle kullanıcıya belirli zaman aralıklarında su içmesi gerektiği bildirilir. Sistem, ReminderContext ile global bir state yönetimi sağlar.
-
-**Sorumlu Kişi:** Salih Can Turan
-
-**İlgili Branch:** develop-Background_process
-
----
-
-**6- Broadcast Receiver:** Broadcast Receiver için diyetisyenlerin hesaplarına yorum atıldığında diyetisyenlerin telefonuna bildirim gönderilmesi işlemi yapılmıştır. Bu işlem **expo-notifications ve expo-device** kütüphaneleriyle sağlanmıştır. Uygulamaya giriş yapan diyetisyenlerin cihazlarına özel oluşan tokenler hesaplarıyla ilişkilendirilir ve danışan bir diyetisyene yorum yaptığında bu diyetisyenin tokeni veri tabanından alınıp sunucuya bu tokene/cihaza bildirim gönderme isteği yapılır. Bu sayede diyetisyenlerin telefonuna uygulama açık olmasa dahi bildirim gönderilmiş olur. 
-
-**İlgili işlemler** DietAppCliet/screens/DashboardScreen.js, DietAppCliet/screens/DietitianPanel.js, DietTracking.API/Controllers/NotificationController.cs, DietTracking.API/Controllers/DietTypeManagementController dosyalarında yapılmıştır.
-
-**Sorumlu Kişi:** Volkan Mutlu
-
-**İlgili Branch:** develop-broadcast_receiver
-
----
-
-**7- Sensor (Motion / Location / Environment):** Sensor özelliği kapsamında cihazın hareket sensörü (accelerometer) kullanılarak adım sayımı yapılmakta ve buna bağlı olarak yakılan kalori hesaplanmaktadır. Bu işlem, React Native ortamında expo-sensors kütüphanesi üzerinden gerçekleştirilmiştir. expo-sensors kütüphanesinden Accelerometer kullanılarak cihazın x, y, z eksenlerindeki ivme değerleri alınır. Hareket şiddetindeki ani değişimlere göre adım sayısı artırılır. Bu, belirli bir eşik değeri (peakThreshold = 0.6) ve zaman aralığı (minStepInterval = 250ms) ile kontrol edilir.
-Her adım sonrası yaklaşık kalori değeri (adım × 0.04 kcal) olarak hesaplanır. Bu değerler günlük olarak yerel veritabanı olan SQLite’a kaydedilir (steps.db). Uygulama her başlatıldığında bugünkü kayıt kontrol edilir ve kaldığı yerden devam eder.
-
-**İlgili branch:** develop-sensor
-
-**Sorumlu Kişi:** Salih Can Turan
-
----
-
-**8- Connectivity (BLE / Wifi / Cellular Network / USB / NFC):** Connectivity için uygulamanın kalori yakım sayfasına BLE(Bluetooth Low Energy) cihazlarına bağlanma ve veri çekme işlemi eklenmiştir, bu işlem ile yakındaki akıllı saatler uygulama üzerinden algılanmakta ve bu cihazlarla bağlantı kurulabilmekte daha sonra "Adımları Senkronize Et" butonuna basılarak akıllı saatin adım sayısı bizim uygulamamıza getirilmekte ve uygulama üzerindeki adım sayısı ile akıllı saatimizin adım sayısı senkronize edilir. Bu işlem için react-native-ble-plx ve react-native-base64 kütüphaneleri kullanılmıştır.
-İlgili işlemler CalorieBurnScreen.js üzerinde yapılmıştır.
-
-**Sorumlu Kişi:** Volkan Mutlu
-
-**İlgili Branch:** develop-connectivity
-
----
-
-**9- Authorization:** Projede JWT tabanlı bir kimlik doğrulama sistemi bulunuyor. Kullanıcılar "Danışan" veya "Diyetisyen" rollerine göre yetkilendiriliyor ve her işlem için token kontrolü yapılıyor. TokenService, kullanıcı bilgilerini ve rollerini içeren token'lar oluşturuyor.
-
-Token üretimi TokenService.cs dosyasında gerçekleştirilir. Projede ilgili bölüm: DietTracking.API/Services/TokenService.cs 
-
-**Sorumlu Kişi:** Kerem Kartal
-
-**İlgili Branch:** develop-authorization
-
----
-
-**10- Cloud Service :** Cloud Service (AI) özelliği kapsamında yapay zeka destekli motivasyon mesajı üretimi gerçekleştirilmiştir. Kullanıcı butona bastığında, axios aracılığıyla OpenRouter üzerinden GPT-3.5-Turbo modeline POST isteği yapılır. Yapay zeka tarafından oluşturulan kısa ve duygusal bir motivasyon mesajı ile birlikte, sağlıklı yaşamla ilgili bir bilgi (örneğin bir aktivitenin kalori değeri veya bir besinin besin değeri) kullanıcıya sunulur.
-
-**Sorumlu Kişi:** Salih Can Turan
-
-**İlgili Branch:** develop-Cloud_service_ai
-
-
-
+4.  **Uygulamayı Çalıştırın:**
+
+    ```bash
+    npm start
+    ```
+
+    Expo Geliştirici Araçları açılacaktır. Buradan QR kodu okutarak uygulamayı Expo Go uygulaması ile telefonunuzda çalıştırabilir veya bir emülatör üzerinde başlatabilirsiniz.
+
+## 📊 Veritabanı Modelleri ve İlişkileri
+
+Uygulamanın veritabanı yapısı, kullanıcılar, diyetisyenler, danışanlar, diyet planları ve aralarındaki ilişkileri içerecek şekilde tasarlanmıştır.
+
+### Ana Tablolar
+
+  * **ApplicationUser:** ASP.NET Core Identity'den türetilmiş, hem diyetisyen hem de danışanların temel bilgilerini tutan kullanıcı tablosu. Ek olarak `Name`, `Surname`, `GraduationCertificatePath` gibi alanlar içerir.
+  * **DietitianProfile:** Diyetisyenlerin detaylı profil bilgilerini (hakkında, uzmanlık alanları, çalışma saatleri vb.) tutar. `ApplicationUser` ile bire-bir ilişkilidir.
+  * **DietitianPatient:** Bir diyetisyenin hangi danışanlara atandığını gösteren ilişki tablosu.
+  * **DietPlan:** Diyetisyen tarafından bir danışan için oluşturulan diyet planının ana bilgilerini içerir.
+  * **DietPlanEntry:** Bir diyet planının öğünler, saatler ve yiyecekler gibi detaylı girdilerini tutar.
+  * **ChatMessage:** Diyetisyen ve danışan arasındaki anlık mesajlaşma kayıtlarını saklar.
+  * **Demand:** Danışanların diyetisyenlere danışmanlık talebi gönderdiği ve diyetisyenlerin bu talepleri yönettiği tablo.
+
+### Diğer Yardımcı Tablolar
+
+  * **PersonalInfo, PhysicalActivity, Lifestyle, FoodHabit, Goal, MedicalHistory, TestResult:** Danışanların anamnez formunda doldurduğu detaylı bilgileri tutan tablolar.
+  * **BodyMeasurement, WeightMeasurement:** Danışanların vücut ve kilo ölçüm kayıtları.
+  * **DietitianCertificate, DietitianExperience:** Diyetisyenlerin sertifika ve deneyim bilgileri.
+  * **Comment:** Danışanların diyetisyenlere yaptığı yorum ve değerlendirmeler.
+  * **DietType:** Sistemde tanımlı olan diyet türleri (Ketojenik, Akdeniz vb.).
+
+### Mermaid ERD (Entity Relationship Diagram)
+
+Aşağıdaki Mermaid kodu, veritabanı tabloları arasındaki ilişkileri görselleştirmektedir.
+
+```mermaid
+erDiagram
+    ApplicationUser ||--o{ DietitianPatient : "Dietitian"
+    ApplicationUser ||--o{ DietitianPatient : "Patient"
+    ApplicationUser ||--o{ DietPlan : "Dietitian"
+    ApplicationUser ||--o{ DietPlan : "Patient"
+    ApplicationUser ||--o{ ChatMessage : "FromUser"
+    ApplicationUser ||--o{ ChatMessage : "ToUser"
+    ApplicationUser ||--o{ Demand : "Sender"
+    ApplicationUser ||--o{ PhysicalActivity : ""
+    ApplicationUser {
+        string Id
+        string Name
+        string Surname
+        string GraduationCertificatePath
+    }
+
+    DietitianProfile {
+        int Id
+        string ApplicationUserId FK
+        string About
+        string Specialties
+    }
+    ApplicationUser ||--|| DietitianProfile : "HasProfile"
+
+    DietitianPatient {
+        int Id
+        string DietitianId FK
+        string PatientId FK
+        DateTime AssignedAt
+    }
+
+    DietPlan {
+        int Id
+        string DietitianId FK
+        string PatientId FK
+        string Description
+    }
+    DietPlan ||--|{ DietPlanEntry : "Contains"
+
+    DietPlanEntry {
+        int Id
+        int DietPlanId FK
+        string DayOfWeek
+        string MealTime
+        string Food
+    }
+
+    ChatMessage {
+        int Id
+        string FromUserId FK
+        string ToUserId FK
+        string Text
+    }
+
+    Demand {
+        int Id
+        int DietitianId FK
+        string SenderId FK
+        string State
+    }
+    DietitianProfile ||--o{ Demand : "Receiver"
+
+    DietitianProfile ||--o{ DietitianCertificate : "Has"
+    DietitianCertificate {
+        int Id
+        int DietitianProfileId FK
+        string Title
+    }
+
+    DietitianProfile ||--o{ DietitianExperience : "Has"
+    DietitianExperience {
+        int Id
+        int DietitianProfileId FK
+        string Position
+    }
+
+    DietitianProfile ||--o{ Comment : "Receives"
+    Comment {
+        int Id
+        int DietitianProfileId FK
+        string AuthorId FK
+        string Text
+        int Rating
+    }
+    ApplicationUser ||--o{ Comment : "Writes"
+
+
+    DietitianProfile }o--o{ DietType : "Offers"
+    DietType {
+        int Id
+        string Name
+        string Description
+    }
+
+```
+
+-----
