@@ -44,8 +44,8 @@ Projeyi yerel makinenizde çalıştırmak için aşağıdaki adımları izleyebi
 1.  **Repository'yi Klonlayın:**
 
     ```bash
-    git clone <repository-url>
-    cd DietAppMobil-38e14c0710a55204b6cc14d911e816586df41043/DietTracking.API
+    git clone  https://github.com/keremkartal/DietAppMobil.git
+    cd DietAppMobil
     ```
 
 2.  **Gerekli Paketleri Yükleyin:**
