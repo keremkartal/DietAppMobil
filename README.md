@@ -32,78 +32,6 @@ Proje, modern ve ölçeklenebilir teknolojiler kullanılarak **Client-Server** m
   * **Axios:** Backend API'si ile iletişim kurmak için kullanılan HTTP istemcisi.
   * **AsyncStorage:** Cihaz üzerinde veri saklamak için.
   * **Expo Notifications:** Anlık bildirimler göndermek için.
-
-##  Kurulum ve Çalıştırma
-
-Projeyi yerel makinenizde çalıştırmak için aşağıdaki adımları izleyebilirsiniz.
-
-### 1\. Backend Kurulumu (`DietTracking.API`)
-
-Öncelikle `.NET 9 SDK`'nın yüklü olduğundan emin olun.
-
-1.  **Repository'yi Klonlayın:**
-
-    ```bash
-    git clone  https://github.com/keremkartal/DietAppMobil.git
-    cd DietAppMobil
-    ```
-
-2.  **Gerekli Paketleri Yükleyin:**
-
-    ```bash
-    dotnet restore
-    ```
-
-3.  **Veritabanını Oluşturun:**
-    Proje Entity Framework Core Migrations kullandığı için, veritabanı ilk çalıştırmada otomatik olarak oluşturulacaktır (`dietapp.db`). Dilerseniz aşağıdaki komutla manuel olarak da veritabanını güncelleyebilirsiniz:
-
-    ```bash
-    dotnet ef database update
-    ```
-
-4.  **Uygulamayı Çalıştırın:**
-
-    ```bash
-    dotnet run
-    ```
-
-    API, `https://localhost:PORT` ve `http://localhost:PORT` adreslerinde çalışmaya başlayacaktır. Swagger arayüzüne `https://localhost:PORT/index.html` adresinden ulaşabilirsiniz.
-
-### 2\. Frontend Kurulumu (`DietAppClient`)
-
-Öncelikle `Node.js`, `npm` ve `Expo CLI`'ın yüklü olduğundan emin olun.
-
-1.  **Dizine Gidin:**
-
-    ```bash
-    cd ../DietAppClient
-    ```
-
-2.  **Gerekli Paketleri Yükleyin:**
-
-    ```bash
-    npm install
-    ```
-
-3.  **API Adresini Yapılandırın:**
-    `DietAppClient/api.js` dosyasını açın ve `baseURL` değişkenini çalışan backend API adresinizle güncelleyin.
-
-    ```javascript
-    const instance = axios.create({
-      baseURL: 'http://<YEREL_IP_ADRESINIZ>:<API_PORT>/api', // Örn: 'http://192.168.1.5:5000/api'
-    });
-    ```
-
-    *Not: Mobil cihazınızın ve bilgisayarınızın aynı ağda olduğundan emin olun.*
-
-4.  **Uygulamayı Çalıştırın:**
-
-    ```bash
-    npm start
-    ```
-
-    Expo Geliştirici Araçları açılacaktır. Buradan QR kodu okutarak uygulamayı Expo Go uygulaması ile telefonunuzda çalıştırabilir veya bir emülatör üzerinde başlatabilirsiniz.
-
 ##  Veritabanı Modelleri ve İlişkileri
 
 Uygulamanın veritabanı yapısı, kullanıcılar, diyetisyenler, danışanlar, diyet planları ve aralarındaki ilişkileri içerecek şekilde tasarlanmıştır.
@@ -228,3 +156,75 @@ erDiagram
 ```
 
 -----
+##  Kurulum ve Çalıştırma
+
+Projeyi yerel makinenizde çalıştırmak için aşağıdaki adımları izleyebilirsiniz.
+
+### 1\. Backend Kurulumu (`DietTracking.API`)
+
+Öncelikle `.NET 9 SDK`'nın yüklü olduğundan emin olun.
+
+1.  **Repository'yi Klonlayın:**
+
+    ```bash
+    git clone  https://github.com/keremkartal/DietAppMobil.git
+    cd DietAppMobil
+    ```
+
+2.  **Gerekli Paketleri Yükleyin:**
+
+    ```bash
+    dotnet restore
+    ```
+
+3.  **Veritabanını Oluşturun:**
+    Proje Entity Framework Core Migrations kullandığı için, veritabanı ilk çalıştırmada otomatik olarak oluşturulacaktır (`dietapp.db`). Dilerseniz aşağıdaki komutla manuel olarak da veritabanını güncelleyebilirsiniz:
+
+    ```bash
+    dotnet ef database update
+    ```
+
+4.  **Uygulamayı Çalıştırın:**
+
+    ```bash
+    dotnet run
+    ```
+
+    API, `https://localhost:PORT` ve `http://localhost:PORT` adreslerinde çalışmaya başlayacaktır. Swagger arayüzüne `https://localhost:PORT/index.html` adresinden ulaşabilirsiniz.
+
+### 2\. Frontend Kurulumu (`DietAppClient`)
+
+Öncelikle `Node.js`, `npm` ve `Expo CLI`'ın yüklü olduğundan emin olun.
+
+1.  **Dizine Gidin:**
+
+    ```bash
+    cd ../DietAppClient
+    ```
+
+2.  **Gerekli Paketleri Yükleyin:**
+
+    ```bash
+    npm install
+    ```
+
+3.  **API Adresini Yapılandırın:**
+    `DietAppClient/api.js` dosyasını açın ve `baseURL` değişkenini çalışan backend API adresinizle güncelleyin.
+
+    ```javascript
+    const instance = axios.create({
+      baseURL: 'http://<YEREL_IP_ADRESINIZ>:<API_PORT>/api', // Örn: 'http://192.168.1.5:5000/api'
+    });
+    ```
+
+    *Not: Mobil cihazınızın ve bilgisayarınızın aynı ağda olduğundan emin olun.*
+
+4.  **Uygulamayı Çalıştırın:**
+
+    ```bash
+    npm start
+    ```
+
+    Expo Geliştirici Araçları açılacaktır. Buradan QR kodu okutarak uygulamayı Expo Go uygulaması ile telefonunuzda çalıştırabilir veya bir emülatör üzerinde başlatabilirsiniz.
+
+
