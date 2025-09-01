@@ -1,17 +1,14 @@
-Harika bir proje olmuş\! İzzet ile birlikte güzel bir iş çıkarmışsınız. GitHub'da paylaşmanız için aşağıda detaylı bir README.md dosyası hazırladım. Bu dosyayı kopyalayıp doğrudan projenizin ana dizinine `README.md` olarak ekleyebilirsiniz.
-
------
 
 # DietApp Mobil Diyet ve Beslenme Takip Uygulaması
 
 Bu proje, diyetisyenler ve danışanları bir araya getiren, kişiselleştirilmiş diyet planları oluşturulmasına, takibine ve anlık iletişime olanak tanıyan bir mobil uygulamadır. .NET Core Web API ve React Native (Expo) kullanılarak geliştirilmiştir.
 
-## ✨ Projenin Amacı
+##  Projenin Amacı
 
   * **Diyetisyenler İçin:** Danışanlarını kolayca yönetebilecekleri, onlara özel diyet listeleri hazırlayabilecekleri, gelişimlerini takip edebilecekleri ve onlarla anlık olarak iletişim kurabilecekleri bir platform sunmak.
   * **Danışanlar İçin:** Diyetisyenleriyle kolayca iletişim kurabilecekleri, diyet listelerine anında erişebilecekleri, vücut ölçümlerini ve ilerlemelerini kaydedebilecekleri ve motivasyonlarını yüksek tutacak özelliklerden faydalanabilecekleri bir mobil uygulama sağlamak.
 
-## 🚀 Teknolojiler ve Mimari
+##  Teknolojiler ve Mimari
 
 Proje, modern ve ölçeklenebilir teknolojiler kullanılarak **Client-Server** mimarisiyle geliştirilmiştir.
 
@@ -36,7 +33,7 @@ Proje, modern ve ölçeklenebilir teknolojiler kullanılarak **Client-Server** m
   * **AsyncStorage:** Cihaz üzerinde veri saklamak için.
   * **Expo Notifications:** Anlık bildirimler göndermek için.
 
-## 🔧 Kurulum ve Çalıştırma
+##  Kurulum ve Çalıştırma
 
 Projeyi yerel makinenizde çalıştırmak için aşağıdaki adımları izleyebilirsiniz.
 
@@ -107,7 +104,7 @@ Projeyi yerel makinenizde çalıştırmak için aşağıdaki adımları izleyebi
 
     Expo Geliştirici Araçları açılacaktır. Buradan QR kodu okutarak uygulamayı Expo Go uygulaması ile telefonunuzda çalıştırabilir veya bir emülatör üzerinde başlatabilirsiniz.
 
-## 📊 Veritabanı Modelleri ve İlişkileri
+##  Veritabanı Modelleri ve İlişkileri
 
 Uygulamanın veritabanı yapısı, kullanıcılar, diyetisyenler, danışanlar, diyet planları ve aralarındaki ilişkileri içerecek şekilde tasarlanmıştır.
 
